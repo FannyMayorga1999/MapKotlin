@@ -27,12 +27,12 @@ public interface Laravel {
 
     @POST("saved_clients")
     fun posMap(
-        @Header("name") name: String,
-        @Header("nameAdress") nameAdress: String,
-        @Header("latitudeNew") latitudeNew: Int,
-        @Header("longitudeNew") longitudeNew: Int,
-        @Header("latitudeOld") latitudeOld: Int,
-        @Header("longitudeOld") longitudeOld: Int
+        @Field("name") name: String,
+        @Field("nameAdress") nameAdress: String,
+        @Field("latitudeNew") latitudeNew: Int,
+        @Field("longitudeNew") longitudeNew: Int,
+        @Field("latitudeOld") latitudeOld: Int,
+        @Field("longitudeOld") longitudeOld: Int
     ) :Call<List<SaveMap>>
 
 }
