@@ -31,15 +31,16 @@ class MainActivity : AppCompatActivity() {
             .build()
             .create(Laravel::class.java)
 
-        service.getMovieById(1)
-            .enqueue(object : Callback<List<hola>> {
+        service.getSavedClient()
+            .enqueue(object : Callback<List<SaveMap>> {
 
-                override fun onResponse(call:Call<List<hola>>, response: Response<List<hola>>) {
+                override fun onResponse(call:Call<List<SaveMap>>, response: Response<List<SaveMap>>) {
                     println("ya salio bien hasta aqui")
-                   response.body()?.forEach  {
-                   }
+                    response.body()?.forEach {
+                        println("${it}")
+                    }
                 }
-                override fun onFailure(call: Call<List<hola>>, t: Throwable){
+                override fun onFailure(call: Call<List<SaveMap>>, t: Throwable){
                     t.printStackTrace()
                     println("si valio vergas")
                 }
