@@ -20,10 +20,20 @@ import retrofit2.http.*
 public interface Laravel {
 
     @GET("saved_clients")
-    fun getSavedClient():Call<List<SaveMap>>
+    fun getMap():Call<List<SaveMap>>
 
-    @GET("/saved_clients/{id}")
-    fun getMovieById(@Path("id") id :Int): Call<List<SaveMap>>
+    /*@GET("/saved_clients/{id}")
+    fun getMovieById(@Path("id") id :Int): Call<List<SaveMap>>*/
+
+    @POST("saved_clients")
+    fun posMap(
+        @Header("name") name: String,
+        @Header("nameAdress") nameAdress: String,
+        @Header("latitudeNew") latitudeNew: Int,
+        @Header("longitudeNew") longitudeNew: Int,
+        @Header("latitudeOld") latitudeOld: Int,
+        @Header("longitudeOld") longitudeOld: Int
+    ) :Call<List<SaveMap>>
 
 }
 

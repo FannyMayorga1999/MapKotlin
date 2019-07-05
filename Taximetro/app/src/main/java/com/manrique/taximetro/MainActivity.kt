@@ -7,7 +7,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Callback
 import retrofit2.Call ;
 import retrofit2.Response;
-import retrofit2.Retrofit
+import retrofit2.Retrofit;
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 
@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
             .build()
             .create(Laravel::class.java)
 
-        service.getSavedClient()
+        service.getMap()
             .enqueue(object : Callback<List<SaveMap>> {
 
                 override fun onResponse(call:Call<List<SaveMap>>, response: Response<List<SaveMap>>) {
@@ -46,7 +46,16 @@ class MainActivity : AppCompatActivity() {
                 }
             })
 
+        service.posMap(name = "lee", nameAdress = "hola", latitudeNew = 52,longitudeNew =58,latitudeOld = 25,longitudeOld = 67)
+            .enqueue(object : Callback<List<SaveMap>>{
+                override fun onResponse(call: Call<List<SaveMap>>,response: Response<List<SaveMap>>) {
+                    response.body()
+                    }
+                override fun onFailure(call: Call<List<SaveMap>>, t: Throwable){
+                    t.printStackTrace()
+                    println("si valio vergas")
+                }
 
-
+        })
     }
 }
